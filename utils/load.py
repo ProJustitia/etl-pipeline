@@ -22,7 +22,7 @@ def save_to_google_sheets(df, json_keyfile, sheet_id, range_name):
         client = gspread.authorize(creds)
 
         sheet = client.open_by_key(sheet_id)
-        worksheet = sheet.worksheet(range_name.split('!')[0])  # ambil nama sheet, misal 'Sheet1'
+        worksheet = sheet.worksheet(range_name.split('!')[0])  
 
         worksheet.clear()
         worksheet.update([df.columns.values.tolist()] + df.values.tolist())

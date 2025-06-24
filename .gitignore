@@ -1,4 +1,5 @@
 .env
 venv/
 google-sheets-api.json
+__pycache__/
 
