@@ -21,23 +21,27 @@ beberapa fitur utama seperti:
 
 ## Install dependency
 
-pip install -r requirements.txt
+```sh
+   pip install -r requirements.txt
+   ```
 
 ## Jalankan program ETL
-
-python main.py
+  ```sh
+   python main.py
+   ```
 
 ## Jalankan unit test yang ada di folder tests
 
-python -m unittest discover tests
+```sh
+   python -m unittest discover tests
+   ```
 
-## Jalankan test coverage yang ada di folder tests
+## Jalankan test coverage yang ada di folder tests dan melihat hasil report
 
-coverage run -m unittest discover tests
-
-## lihat hasil report
-
-coverage report -m
+```sh
+   coverage run -m unittest discover tests
+   coverage report -m
+   ```
 
 ## Link Google Sheets
 
