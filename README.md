@@ -19,19 +19,19 @@ beberapa fitur utama seperti:
 
 # Cara menjalankan proyek
 
-## Instal dependency
+## Install dependency
 
 pip install -r requirements.txt
 
-## Jalanin ETL
+## Jalankan program ETL
 
 python main.py
 
-## Jalanin unit test yang ada di folder tests
+## Jalankan unit test yang ada di folder tests
 
 python -m unittest discover tests
 
-## Jalanin test coverage yang ada di folder tests
+## Jalankan test coverage yang ada di folder tests
 
 coverage run -m unittest discover tests
 

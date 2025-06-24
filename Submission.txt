@@ -1,0 +1,17 @@
+# Instal dependency
+pip install -r requirements.txt
+
+# Jalankan program ETL
+python main.py
+
+# Jalankan unit test yang ada di folder tests
+python -m unittest discover tests
+
+# Jalanin test coverage yang ada di folder tests
+coverage run -m unittest discover tests
+
+# lihat hasil report
+coverage report -m
+
+# Link Google Sheets:
+https://docs.google.com/spreadsheets/d/18j_FXgD08eOjxc_UbBS_WmJOk5CaQWGlqTtJceZQhV8/edit?gid=0#gid=0
