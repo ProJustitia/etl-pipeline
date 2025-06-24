@@ -10,24 +10,28 @@ def save_to_csv(df, filename="products.csv"):
         print(f"CSV Save Error: {e}")
 
 
-def save_to_google_sheets(df, json_keyfile, sheet_name="ETL Products"):
+def save_to_google_sheets(df, json_keyfile, sheet_id, range_name):
     try:
-        scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+        df["timestamp"] = df["timestamp"].astype(str)
+
+        scope = [
+            "https://spreadsheets.google.com/feeds",
+            "https://www.googleapis.com/auth/drive"
+        ]
         creds = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile, scope)
         client = gspread.authorize(creds)
 
-        sheet = client.create(sheet_name)
-        sheet.share('', perm_type='anyone', role='writer')
+        sheet = client.open_by_key(sheet_id)
+        worksheet = sheet.worksheet(range_name.split('!')[0])  # ambil nama sheet, misal 'Sheet1'
 
-        worksheet = sheet.get_worksheet(0)
-
-        df = df.copy()
-        df['timestamp'] = df['timestamp'].astype(str)
-
+        worksheet.clear()
         worksheet.update([df.columns.values.tolist()] + df.values.tolist())
+        print("✅ Data berhasil disimpan ke Google Sheets.")
 
     except Exception as e:
-        print(f"Google Sheets Save Error: {e}")
+        print(f"❌ Google Sheets Save Error: {e}")
+
+
 
 
 
