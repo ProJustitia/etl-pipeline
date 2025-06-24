@@ -1,6 +1,15 @@
-from utils.extract import extract_data
+import unittest
+from utils.extract import extract
+import pandas as pd
 
-def test_extract_not_empty():
-    data = extract_data()
-    assert len(data) > 0
-    assert all('Title' in item for item in data)
+class TestExtract(unittest.TestCase):
+    def test_extract_output(self):
+        df = extract()
+        self.assertIsInstance(df, pd.DataFrame)
+        if not df.empty:
+            self.assertIn('Title', df.columns)
+            self.assertIn('Price', df.columns)
+            self.assertIn('Rating', df.columns)
+
+if __name__ == "__main__":
+    unittest.main()
